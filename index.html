@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="background background">
+    <div class="container">
+        <h1>Habit Tracker's To-do List</h1>
+        <br>
+
+        <div class="main">
+            <div class="row my-3">
+                <input class="inputstyle form-control col-8" type="text" id="todoInput"
+                    placeholder="Type in your task!">
+                <button class=" btn btn-pink rounded-right col-1" onclick="addTodo()">+</button>
+                <br>
+            </div>
+
+            <div>
+                <button id="showAll" class="btn btn-sm btn-outline-warning rounded-pill mr-2 active"
+                    onclick="showAll()">All</button>
+                <!-- <button id="showOnSchedule" class="buttons" onclick="showOnSchedule()">On Schedule</button> -->
+                <button id="showOnGoing" class="btn btn-sm btn-outline-warning rounded-pill mr-2 active"
+                    onclick="showOnGoing()">On Going</button>
+                <button id="showCompleted" class="btn btn-sm btn-outline-warning rounded-pill mr-2 active"
+                    onclick="showCompleted()">Completed</button>
+                <br>
+            </div>
+
+            <div id="resultArea"> </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
