@@ -1,17 +1,31 @@
 // HTML element declare
 let todoList = [];
 
+const initialize = () => {
+    let dataFromLocalStorage = JSON.parse(localStorage.getItem('todoList'))
+    console.log("local:", dataFromLocalStorage)
+    if (dataFromLocalStorage) {
+        todoList = dataFromLocalStorage
+        render(todoList)
+    }
+
+}
+
 var allButton = document.getElementById("showAll")
 var onScheduleButton = document.getElementById("showOnSchedule")
 var onGoingButton = document.getElementById("showOnGoing")
 var completedButton = document.getElementById("showCompleted")
 
+
 // constructors
 const addTodo = () => {
+    // console.log(todo)
     let todo = document.getElementById("todoInput").value;
     let itemTodo = { contents: todo, complete: false };
 
     todoList.push(itemTodo);
+    localStorage.setItem('todoList', JSON.stringify(todoList))
+
     console.log(todoList);
     render(todoList);
 };
@@ -19,14 +33,19 @@ const addTodo = () => {
 
 // buttons
 const toggleDone = (index) => {
+    true
     todoList[index].complete = !todoList[index].complete
+    localStorage.setItem('todoList', JSON.stringify(todoList))
+
     allButton.classList.add();
     // onScheduleButton.remove();
     onGoingButton.classList.remove();
     completedButton.classList.remove();
+
     console.log(todoList);
     render(todoList);
 }
+
 
 
 // why not working? ----------------------------------------------------------------------------------------------------------------*
@@ -51,20 +70,22 @@ const render = (array) => {
         .map((item, index) => {
             let html = "";
             if (item.complete == false) {
-                html += `<div class="item-style list">${item.contents} <a onclick="toggleDone(${index})" href="#"><img src="ongoing-1.gif" width="70px")></a></div>`;
+                html += `<div class="item-style list">${item.contents} <a onclick="toggleDone(${index})" href="#"><img src="ongoing-1.gif" width="70px")></a>`;
             } else {
-                html += `<div class="item-style list"><strike>${item.contents}</strike> <a onclick="toggleDone(${index})" href="#"><img src="completed-1.png" width="70px")></a></div>`;
+                html += `<div class="item-style list"><strike>${item.contents}</strike> <a onclick="toggleDone(${index})" href="#"><img src="completed-1.png" width="70px")></a>`;
             }
-            html += `<div class="item-style list" a href='#' onclick='remove(${index})'><img src="garbage.png" width="30px")></a></div>`;
+            html += `<img src="garbage.png" width="30px" "item-style list" a href='#' onclick='remove(${index})')></a></div>`;
             return html
         })
         .join("");
     document.getElementById("resultArea").innerHTML = todoHTML;
+
 };
 
 // what purpose?? ----------------------------------------------------------------------------------------------------------------------*
 const remove = (index) => {
     todoList.splice(index, 1)
+    localStorage.setItem('todoList', JSON.stringify(todoList))
     console.log(todoList)
     render(todoList)
 }
@@ -111,3 +132,6 @@ const showCompleted = () => {
     completedButton.classList.add();
     render(completedList)
 }
+
+initialize()
+
